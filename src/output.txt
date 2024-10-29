@@ -1,0 +1,161 @@
+Folder PATH listing for volume DATA
+Volume serial number is 70CB-BB4E
+D:.
+¦   App.jsx
+¦   CustomEdge.jsx
+¦   draggableNode.jsx
+¦   filestructure.txt
+¦   Home.jsx
+¦   index.css
+¦   main.jsx
+¦   output.txt
+¦   Store.jsx
+¦   Submit.jsx
+¦   Toolbar.jsx
+¦   UI.jsx
+¦   Visualiser.jsx
+¦   
++---assets
+¦       react.svg
+¦       
++---assets - Copy
+¦   ¦   4-small.png
+¦   ¦   aboutheroimg.gif
+¦   ¦   background.jpg
+¦   ¦   brainwave-symbol-white.svg
+¦   ¦   brainwave-symbol.svg
+¦   ¦   brainwave.svg
+¦   ¦   check-02.svg
+¦   ¦   check.svg
+¦   ¦   chrome-cast.svg
+¦   ¦   detect.jpg
+¦   ¦   detectly.png
+¦   ¦   disc-02.svg
+¦   ¦   file-02.svg
+¦   ¦   gradient.png
+¦   ¦   grid.png
+¦   ¦   home-smile.svg
+¦   ¦   img1.jpg
+¦   ¦   img2.jpg
+¦   ¦   img3.jpg
+¦   ¦   index.js
+¦   ¦   loading-01.svg
+¦   ¦   loading.png
+¦   ¦   obj.gif
+¦   ¦   play.svg
+¦   ¦   plus-square.svg
+¦   ¦   react.svg
+¦   ¦   recording-01.svg
+¦   ¦   recording-03.svg
+¦   ¦   search-md.svg
+¦   ¦   sliders-04.svg
+¦   ¦   yourlogo.svg
+¦   ¦   
+¦   +---benefits
+¦   ¦       card-1.svg
+¦   ¦       card-2.svg
+¦   ¦       card-3.svg
+¦   ¦       card-4.svg
+¦   ¦       card-5.svg
+¦   ¦       card-6.svg
+¦   ¦       icon-1.svg
+¦   ¦       icon-2.svg
+¦   ¦       icon-3.svg
+¦   ¦       icon-4.svg
+¦   ¦       image-2.png
+¦   ¦       
+¦   +---collaboration
+¦   ¦       curve-1.svg
+¦   ¦       curve-2.svg
+¦   ¦       discord.png
+¦   ¦       figma.png
+¦   ¦       framer.png
+¦   ¦       notion.png
+¦   ¦       photoshop.png
+¦   ¦       protopie.png
+¦   ¦       raindrop.png
+¦   ¦       slack.png
+¦   ¦       
+¦   +---hero
+¦   ¦       curve.png
+¦   ¦       hero-background.jpg
+¦   ¦       robot.jpg
+¦   ¦       
+¦   +---notification
+¦   ¦       image-1.png
+¦   ¦       image-2.png
+¦   ¦       image-3.png
+¦   ¦       image-4.png
+¦   ¦       
+¦   +---pricing
+¦   ¦       lines.svg
+¦   ¦       stars.svg
+¦   ¦       
+¦   +---roadmap
+¦   ¦       coins.png
+¦   ¦       done.svg
+¦   ¦       hero.png
+¦   ¦       image-1.png
+¦   ¦       image-2.png
+¦   ¦       image-3.png
+¦   ¦       image-4.png
+¦   ¦       undone.svg
+¦   ¦       
+¦   +---services
+¦   ¦       service-1.png
+¦   ¦       service-2.png
+¦   ¦       service-3.png
+¦   ¦       
+¦   +---socials
+¦   ¦       discord.svg
+¦   ¦       facebook.svg
+¦   ¦       instagram.svg
+¦   ¦       telegram.svg
+¦   ¦       twitter.svg
+¦   ¦       
+¦   +---svg
+¦           Arrow.jsx
+¦           Brackets.jsx
+¦           ButtonGradient.jsx
+¦           ButtonSvg.jsx
+¦           ChatBubbleWing.jsx
+¦           ClipPath.jsx
+¦           MenuSvg.jsx
+¦           PlusSvg.jsx
+¦           SectionSvg.jsx
+¦           
++---Components
+¦   ¦   AboutHero.jsx
+¦   ¦   Benefits.jsx
+¦   ¦   Button.jsx
+¦   ¦   Collaboration.jsx
+¦   ¦   Features.jsx
+¦   ¦   Footer.jsx
+¦   ¦   Header.jsx
+¦   ¦   Heading.jsx
+¦   ¦   Hero.jsx
+¦   ¦   Home.jsx
+¦   ¦   HowItWorks.jsx
+¦   ¦   Notification.jsx
+¦   ¦   Section.jsx
+¦   ¦   Tagline.jsx
+¦   ¦   WhyChoose.jsx
+¦   ¦   
+¦   +---design
+¦           Benefits.jsx
+¦           Collaboration.jsx
+¦           Header.jsx
+¦           Hero.jsx
+¦           Pricing.jsx
+¦           Roadmap.jsx
+¦           Services.jsx
+¦           
++---constants
+¦       index.js
+¦       
++---nodes
+        InputNode.jsx
+        LLMNode.jsx
+        OutputNode.jsx
+        TextNode.jsx
+        

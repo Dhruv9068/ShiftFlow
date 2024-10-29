@@ -1,0 +1,46 @@
+File structure of Frontend and backend directory
+
+
+
+  frontend
+        .src
+            |   App.jsx
+            |   draggableNode.jsx
+            |   filestructure.txt
+            |   full_directory_structure.txt
+            |   Home.jsx
+            |   index.css
+            |   main.jsx
+            |   output.txt
+            |   PipelineUI.jsx
+            |   README.md
+            |   Store.jsx
+            |   Submit.jsx
+            |   Toolbar.jsx
+            |   VisualiseCanvas.jsx
+            |   
+            +---assets
+            |       backgroundimg.png
+            |       check.svg
+            |       
+            +---components
+            |       Features.jsx
+            |       Footer.jsx
+            |       Header.jsx
+            |       Hero.jsx
+            |       HowToUse.jsx
+            |       InteractiveDemo.jsx
+            |       
+            \---nodes
+                    InputNode.jsx
+                    LLMNode.jsx
+                    OutputNode.jsx
+        .Public
+            |backgroundimg.png
+            |bg-gif.gif
+            |backgroundVid.mp4        
+
+backend
+       |main.py  
+       |_pycache_
+       |venv (not compulsory)

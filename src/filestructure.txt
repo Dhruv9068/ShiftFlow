@@ -1,0 +1,25 @@
+Folder PATH listing for volume DATA
+Volume serial number is 70CB-BB4E
+D:.
+|   App.jsx
+|   draggableNode.jsx
+|   filestructure.txt
+|   index.css
+|   main.jsx
+|   store.jsx
+|   submit.jsx
+|   toolbar.jsx
+|   ui.jsx
+|   
++---assets
+|       react.svg
+|       
++---Components
+|       Home.jsx
+|       
+\---nodes
+        InputNode.jsx
+        LLMNode.jsx
+        OutputNode.jsx
+        TextNode.jsx
+        

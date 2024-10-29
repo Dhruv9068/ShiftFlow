@@ -1,0 +1,23 @@
+/* Import external CSS files first */
+@import 'animate.css';
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+  
+  /* Apply the GIF background */
+
+
+  
+  /* Custom Global Styles */
+  body {
+    @apply bg-gradient-to-b from-black via-blue-950 to-black min-h-screen;
+    transition: background-color 0.3s ease-in-out; /* Optional: Smooth transition */
+  }
+  
+  
