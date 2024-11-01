@@ -4,6 +4,8 @@ import 'animate.css';
 const Features = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const features = [
+
+// 4 features circle ke ....
     {
       id: 1,
       heading: 'Visualize Graphs',
@@ -32,11 +34,11 @@ const Features = () => {
 
   const totalFeatures = features.length;
 
-  // Automatically move to the next item every 3 seconds
+  //3 seconds rotation......
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % totalFeatures);
-    }, 3000); // Adjust timing here for faster or slower rotations
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [totalFeatures]);
@@ -99,15 +101,15 @@ const Features = () => {
               transform: `translateZ(-20px)`, // Position behind the circles
               top: '50%',
               left: '50%',
-              marginTop: '-100px', // Half the height to center it
-              marginLeft: '-100px', // Half the width to center it
+              marginTop: '-100px', 
+              marginLeft: '-100px', 
               zIndex: -1, // Position behind the circles
             }}
           />
         </div>
       </div>
 
-      {/* Right Half with Titles and Descriptions */}
+      {/* Right half fr title and description  */}
       <div className="w-full md:w-1/2 mt-4 md:mt-0 md:mb-36 flex flex-col items-center justify-center text-center px-2 md:px-0">
         <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
           {features[activeIndex].heading}
