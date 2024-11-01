@@ -4,8 +4,6 @@ import 'animate.css';
 const Features = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const features = [
-
-// 4 features circle ke ....
     {
       id: 1,
       heading: 'Visualize Graphs',
@@ -34,24 +32,21 @@ const Features = () => {
 
   const totalFeatures = features.length;
 
-  //3 seconds rotation......
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % totalFeatures);
-    }, 3000); 
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [totalFeatures]);
 
   return (
     <div className="relative container p-0 md:pb-4 flex flex-col md:flex-row h-[700px] md:h-[600px] bg-black overflow-hidden">
-      {/* Light effect */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-purple-700 to-transparent opacity-30"></div>
-        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-blue-700 to-transparent opacity-30"></div>
+        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-purple-800 to-transparent opacity-30"></div>
+        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-blue-800 to-transparent opacity-30"></div>
       </div>
 
-      {/* Left Half with Carousel */}
       <div className="w-full md:w-1/2 flex justify-center items-center mt-28 md:mt-20">
         <div
           className="relative flex justify-center items-center"
@@ -63,53 +58,36 @@ const Features = () => {
             className="carousel"
             style={{
               position: 'relative',
-              width: '200px', // Width of the carousel
-              height: '200px', // Height of the carousel
+              width: '240px',
+              height: '240px',
               transformStyle: 'preserve-3d',
-              transform: `rotateY(${activeIndex * -90}deg)`,
+              transform: `rotateY(${activeIndex * -90}deg) rotateX(10deg)`, // Adjusted X rotation for better angle
               transition: 'transform 1s ease',
-              margin: '0 auto', // Centering the carousel
+              margin: '0 auto',
             }}
           >
             {features.map((feature, index) => (
               <div
                 key={feature.id}
-                className="feature-circle absolute w-36 md:w-52 h-36 md:h-52 flex items-center justify-center rounded-full bg-gradient-to-r from-black to-blue-950 bg-opacity-96 text-white border-4 border-white cursor-pointer"
+                className="feature-square absolute w-48 h-48 flex items-center justify-center bg-gradient-to-r from-black to-blue-950 bg-opacity-95 text-white border-4 border-gray-600 cursor-pointer shadow-lg"
                 style={{
                   transform: `
                     rotateY(${index * (360 / totalFeatures)}deg)
-                    translateZ(100px) // Adjust this value for visual spacing
+                    translateZ(120px
                   `,
-                  boxShadow: '0 0 8px white',
-                  textShadow: '0 0 3px white',
+                  boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)',
+                  textShadow: '0 0 5px rgba(255, 255, 255, 0.5)',
                 }}
               >
-                <h3 className="text-sm md:text-lg font-bold text-center">{feature.heading}</h3>
+                <h3 className="text-md font-bold text-center">{feature.heading}</h3>
               </div>
             ))}
           </div>
 
-          {/* Circular rotation path */}
-          <div
-            className="rotation-path"
-            style={{
-              position: 'absolute',
-              width: '200px', // Diameter of the circle
-              height: '200px', // Diameter of the circle
-              border: '2px dashed rgba(255, 255, 255, 0.5)', // Dashed line
-              borderRadius: '50%', // Makes it circular
-              transform: `translateZ(-20px)`, // Position behind the circles
-              top: '50%',
-              left: '50%',
-              marginTop: '-100px', 
-              marginLeft: '-100px', 
-              zIndex: -1, // Position behind the circles
-            }}
-          />
+        
         </div>
       </div>
 
-      {/* Right half fr title and description  */}
       <div className="w-full md:w-1/2 mt-4 md:mt-0 md:mb-36 flex flex-col items-center justify-center text-center px-2 md:px-0">
         <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
           {features[activeIndex].heading}
