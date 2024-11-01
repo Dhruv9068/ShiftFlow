@@ -89,9 +89,7 @@ Check out ShiftFlow [here](http://shiftfl0w.web.app/).
 
 ## Contributing
 
-We welcome contributions! Please fork the repository, create a feature branch, and submit a pull request for review.
+Welcome to all contributors! Please fork the repository, create a feature branch, and submit a pull request for review.
 
-## Credits
 
-Special thanks to **Shreya Khanna** for her invaluable contributions to the development of ShiftFlow.
 
