@@ -9,25 +9,14 @@ const Footer = () => {
           <h1 className="text-3xl font-bold text-[#f9fafc] mb-4 font-fredoka">ShiftFlow</h1>
         </div>
 
-        {/* Right Section: Social Media Links */}
-        <div className="flex justify-center space-x-6">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-lightGray hover:text-neonBlue transition duration-300">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-lightGray hover:text-neonBlue transition duration-300">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-lightGray hover:text-neonBlue transition duration-300">
-            <i className="fab fa-linkedin-in"></i>
-          </a>
-        </div>
+        
       </div>
 
       <hr className="my-6 border-gray-700" />
 
       {/* Bottom Section: Copyright */}
       <div className="text-center text-sm text-lightGray">
-        &copy; {new Date().getFullYear()} Aconews. All Rights Reserved.
+        &copy; {new Date().getFullYear()} ShiftFlow. All Rights Reserved.
       </div>
       
       {/* Designed By */}

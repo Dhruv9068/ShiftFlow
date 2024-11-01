@@ -35,12 +35,22 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full h-[500px] flex justify-center items-center bg-black overflow-hidden">
-  
+    <div
+      className="relative w-full h-[500px] flex justify-center items-center overflow-hidden"
+      style={{
+        backgroundImage: 'url("https://img.freepik.com/free-vector/black-faded-gradient-background-vector-with-blue-border_53876-125750.jpg")', // Replace with your background image path
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-purple-700 opacity-50 z-10"></div>
+
 
       <style>{`
         .hero-heading {
-          background-image: url("https://64.media.tumblr.com/3614deac85fc805abf6f39d0be278714/tumblr_orf486SAlV1uzwgsuo1_400.gif");
+          background-image: url("https://giffiles.alphacoders.com/324/32493.gif");
           background-clip: text;
           -webkit-background-clip: text;
           color: transparent;
@@ -49,18 +59,6 @@ const Hero = () => {
         }
         .hero-heading:hover {
           background-size: 100%;
-        }
-
-        @keyframes fill {
-          0% {
-            transform: translateY(100%);
-          }
-          50% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(100%);
-          }
         }
 
         /* Glow effect for neon lighting */
@@ -84,11 +82,11 @@ const Hero = () => {
 
       {/* Text Content */}
       <div className="relative z-20 text-center">
-        <h1 className="hero-heading text-[60px] lg:text-[80px] font-bold">
+        <h1 className="hero-heading text-[40px] md:text-[60px] lg:text-[80px] font-bold">
           {displayedText}
         </h1>
         {headings[currentHeading].subtext && (
-          <h3 className="mt-4 text-[24px] lg:text-[28px] text-white">
+          <h3 className="mt-4 text-[20px] md:text-[24px] lg:text-[28px] text-white">
             {headings[currentHeading].subtext}
           </h3>
         )}

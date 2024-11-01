@@ -26,7 +26,7 @@ const howItWorksData = [
 const HowItWorks = () => {
   return (
     <div
-      className="relative flex flex-col items-center justify-center py-20 md:py-32 min-h-[100vh]"
+      className="relative flex flex-col items-center justify-center pt-10 pb-2 md:py-32 min-h-[80vh]"
       style={{
         backgroundColor: 'black',
         backgroundImage: 'linear-gradient(to bottom, rgba(4, 59, 93, 0.5), transparent)',
@@ -35,11 +35,11 @@ const HowItWorks = () => {
       <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-7xl mx-auto">
         
         {/* Left Column with Steps 1 and 2 */}
-        <div className="flex flex-col items-start md:mr-10 px-4">
+        <div className="flex flex-col items-start md:mr-20 px-4">
           {howItWorksData.slice(0, 2).map((step) => (
             <motion.div
               key={step.id}
-              className="flex items-start mb-14" // Increased padding between steps
+              className="flex items-start mb-14" 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -56,14 +56,14 @@ const HowItWorks = () => {
 
         {/* Center Animated Text */}
         <motion.div
-          className="flex flex-col items-center justify-center mx-auto mb-10 "
+          className="flex flex-col items-center justify-center mx-20 mb-10 "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           style={{ marginRight: '2rem' }}
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text text-center my-20 mr-20"
+            className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text text-center my-20 md:mr-24"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             style={{
@@ -72,20 +72,20 @@ const HowItWorks = () => {
               color: 'transparent',
             }}
           >
-            How It Works
+            How to Use?
           </motion.h1>
         </motion.div>
 
         {/* Right Column with Steps 3 and 4 */}
-        <div className="flex flex-col items-start md:ml-10 px-4">
+        <div className="flex flex-col items-start md:mr-10 px-4 ">
           {howItWorksData.slice(2).map((step) => (
             <motion.div
               key={step.id}
-              className="flex items-start mb-14"
+              className="flex items-start "
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-400 to-black shadow-lg text-white text-lg font-bold mr-6">
+              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-400 to-black shadow-lg text-white text-lg font-bold mr-6 mb-14">
                 {step.id}
               </div>
               <div className="text-white text-left text-sm md:text-lg">

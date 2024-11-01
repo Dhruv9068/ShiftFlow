@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
+    "firebase": "^11.0.1",
     "framer-motion": "^11.11.10",
     "frontend": "file:",
     "motion-frame": "^2.0.2",

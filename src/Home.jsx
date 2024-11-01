@@ -1,12 +1,11 @@
 import Hero from './components/Hero';
-import Header from './components/Header';
 import Footer from './components/Footer';
-
 import Features from './components/Features';
-import InteractiveDemo from './components/InteractiveDemo';
 import HowItWorks from './components/HowItWorks';
 import Demo from './components/Demo';
 import Parallax from './components/Parallex';
+import TryNow from './components/TryNow';
+import Header from './Components/Header';
 
 
 const Home = () => {
@@ -28,8 +27,8 @@ const Home = () => {
 
          <Demo/>
 
-        <section id="interactive-demo">
-          <InteractiveDemo />
+        <section id="TryNow">
+          <TryNow />
         </section>
 
         <Footer />

@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full z-50 transition-all duration-300 ease-in-out bg-transparent text-white">
+    <div className="w-full z-50 transition-all duration-300 ease-in-out bg-gradient-to-t from-black to-blue-950 text-white">
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10">
         <Link to="/" className="w-[250px] h-[100px] xl:mr-8 flex items-center justify-center transform transition-transform hover:scale-110 font-fredoka font-bold">
         <div>
@@ -99,7 +99,7 @@ const Header = () => {
           </button>
 
           <nav
-            className={`${openNavigation ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row fixed top-0 left-0 right-0 bottom-0 ${openNavigation ? 'bg-gradient-to-r from-blue-800 to-blue-800' : 'bg-gradient-to-r from-gray-800 to-blue-900'} lg:bg-transparent border-spacing-1 lg:relative lg:w-auto w-full items-center z-50`}
+            className={`${openNavigation ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row fixed top-0 left-0 right-0 bottom-0 ${openNavigation ? 'bg-gradient-to-r from-blue-950 to-black' : 'bg-gradient-to-r from-gray-800 to-blue-900'} lg:bg-transparent border-spacing-1 lg:relative lg:w-auto w-full items-center z-50`}
             style={{
               width: openNavigation ? '100vw' : 'auto',
               height: openNavigation ? '100vh' : 'auto',

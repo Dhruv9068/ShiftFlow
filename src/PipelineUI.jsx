@@ -9,7 +9,7 @@ import ReactFlow, {
 } from 'react-flow-renderer';
 import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FiSave, FiTrash, FiUpload } from 'react-icons/fi'; // Icons
+import { FiPlus, FiSave, FiTrash, FiUpload, FiFolder, FiX } from 'react-icons/fi'; // Relevant Icons
 import BaseNode from './nodes/BaseNode'; // Custom Node Component
 
 // Registering custom node types
@@ -42,10 +42,20 @@ const PipelineUI = ({ nodes = [], setNodes, edges = [], setEdges }) => {
   const [showMore, setShowMore] = useState(false);
   const [nodeColor] = useState('#fff');
   const [edgeColor] = useState('#0adcf8');
+  const [showSidebar, setShowSidebar] = useState(false); // State for sidebar visibility
+  const [history, setHistory] = useState([]); // State for undo/redo history
+  const [currentStep, setCurrentStep] = useState(-1); // Track current step in history
 
   const handleAddNode = useCallback((type, position) => {
+    const formatLabel = (type) => {
+      return type.replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before uppercase letters in camelCase
+                 .replace(/([a-z])(_)/g, '$1 ') // Add space after underscores
+                 .replace(/_/g, ' ') // Replace underscores with spaces
+                 .toUpperCase(); // Convert to uppercase
+    };
+
     const defaultData = {
-      label: `${type.toUpperCase()}`,
+      label: formatLabel(type),
       textInput: '',
       model: '',
       system: '',
@@ -88,8 +98,17 @@ const PipelineUI = ({ nodes = [], setNodes, edges = [], setEdges }) => {
       }, // Node background color
     };
 
-    setNodes((prevNodes) => prevNodes.concat(newNode));
-  }, [setNodes, nodeColor]);
+    // Update nodes and history
+    setNodes((prevNodes) => {
+      const updatedNodes = prevNodes.concat(newNode);
+      setHistory((prevHistory) => {
+        const newHistory = [...prevHistory.slice(0, currentStep + 1), updatedNodes];
+        setCurrentStep(newHistory.length - 1);
+        return newHistory;
+      });
+      return updatedNodes;
+    });
+  }, [setNodes, nodeColor, history, currentStep]);
 
   const onConnect = (params) => {
     const edgeWithLabel = {
@@ -100,6 +119,58 @@ const PipelineUI = ({ nodes = [], setNodes, edges = [], setEdges }) => {
       markerEnd: { type: MarkerType.ArrowClosed, color: edgeColor },
     };
     setEdges((prev) => addEdge(edgeWithLabel, prev));
+  };
+
+  // Handle JSON file upload
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const json = JSON.parse(e.target.result);
+          setNodes(json.nodes || []);
+          setEdges(json.edges || []);
+          setHistory([]); // Clear history on new upload
+          setCurrentStep(-1); // Reset current step
+        } catch (error) {
+          console.error("Invalid JSON file", error);
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  // Download current nodes and edges as JSON
+  const downloadJSON = (data, filename = 'pipeline.json') => {
+    const json = JSON.stringify({ nodes: data.nodes, edges: data.edges }, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // Undo function
+  const handleUndo = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      setNodes(history[currentStep - 1]);
+      setEdges(edges);
+    }
+  };
+
+  // Redo function
+  const handleRedo = () => {
+    if (currentStep < history.length - 1) {
+      setCurrentStep(currentStep + 1);
+      setNodes(history[currentStep + 1]);
+      setEdges(edges);
+    }
   };
 
   return (
@@ -113,6 +184,7 @@ const PipelineUI = ({ nodes = [], setNodes, edges = [], setEdges }) => {
               className="py-3 px-4 sm:px-6 text-white border border-white hover:bg-blue-950 hover:border-white transition-all duration-200 rounded text-sm sm:text-base"
               onClick={(e) => handleAddNode(node.type, { x: e.clientX, y: e.clientY })}
             >
+              <FiPlus className="mr-1" />
               {node.label}
             </button>
           ))}
@@ -126,40 +198,79 @@ const PipelineUI = ({ nodes = [], setNodes, edges = [], setEdges }) => {
           )}
         </div>
 
-        {/* Save/Load/Clear Buttons */}
+        {/* Undo/Redo/Clear/Save/Sidebar Toggle Buttons */}
         <div className="flex space-x-2">
+          <button
+            className="p-2 bg-gray-900 border border-gray-600 rounded hover:bg-gray-700 text-white"
+            onClick={handleUndo}
+            disabled={currentStep <= 0} // Disable if there's nothing to undo
+          >
+            Undo
+          </button>
+          <button
+            className="p-2 bg-gray-900 border border-gray-600 rounded hover:bg-gray-700 text-white"
+            onClick={handleRedo}
+            disabled={currentStep >= history.length - 1} // Disable if there's nothing to redo
+          >
+            Redo
+          </button>
           <button
             className="p-2 bg-gray-900 border border-gray-600 rounded hover:bg-gray-700"
             onClick={() => {
               setNodes([]);
               setEdges([]);
+              setHistory([]); // Clear history on clear
+              setCurrentStep(-1); // Reset current step
             }}
           >
             <FiTrash className="text-white" />
           </button>
           <button
             className="p-2 bg-gray-900 border border-gray-600 rounded hover:bg-gray-700"
-            onClick={() => localStorage.setItem('savedGraph', JSON.stringify({ nodes, edges }))}
+            onClick={() => {
+              const savedGraph = { nodes, edges };
+              localStorage.setItem('savedGraph', JSON.stringify(savedGraph));
+            }}
           >
             <FiSave className="text-white" />
           </button>
           <button
             className="p-2 bg-gray-900 border border-gray-600 rounded hover:bg-gray-700"
-            onClick={() => {
-              const savedGraph = JSON.parse(localStorage.getItem('savedGraph'));
-              if (savedGraph) {
-                setNodes(savedGraph.nodes);
-                setEdges(savedGraph.edges);
-              }
-            }}
+            onClick={() => setShowSidebar(!showSidebar)} // Toggle sidebar visibility
           >
-            <FiUpload className="text-white" />
+            <FiFolder className="text-white" />
           </button>
         </div>
       </div>
 
-      {/* ReactFlow Graph */}
-      <div className="w-full h-full relative">
+      {/* Sidebar for Upload/Download Options */}
+      {showSidebar && (
+        <div className="fixed right-0 top-0 h-full w-64 bg-black bg-opacity-80 text-white p-4 shadow-lg z-50">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold">File Options</h2>
+            <button onClick={() => setShowSidebar(false)}>
+              <FiX className="text-white" />
+            </button>
+          </div>
+          <div className="mb-4 mt-10">
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleFileUpload}
+              className="mb-2"
+            />
+            <button
+              className="w-full bg-blue-950 text-white py-10 rounded"
+              onClick={() => downloadJSON({ nodes, edges })}
+            >
+              Download JSON
+            </button>
+          </div>
+        </div>
+      )}
+
+   {/* ReactFlow Graph */}
+   <div className="w-full h-full relative bg-gradient-to-b from-black to-blue-950">
         <ReactFlow
           nodes={nodes}
           edges={edges}
